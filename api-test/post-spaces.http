@@ -1,0 +1,6 @@
+POST https://j6ocolfoih.execute-api.ap-northeast-1.amazonaws.com/prod/spaces
+Content-Type: application/json
+
+{
+    "location": "Paris"
+}
