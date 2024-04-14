@@ -3,6 +3,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "aws-lambda
 import { v4 as uuidv4 } from "uuid";
 import post from "./methods/post";
 import get from "./methods/get";
+import put from "./methods/put";
 
 const ddbClient = new DynamoDBClient({});
 
@@ -12,10 +13,10 @@ const handler = async (event: APIGatewayProxyEvent, context: Context): Promise<A
         switch (event.httpMethod) {
             case "GET":
                 return get(event, ddbClient);
-                break;
             case "POST":
                 return post(event, ddbClient);
-                break;
+            case "PUT":
+                return put(event, ddbClient);
             default:
                 break;
         }
