@@ -10,7 +10,7 @@ export class APIStack extends cdk.Stack {
 
     constructor(scope: Construct, id: string, props: cdk.StackProps & {
         helloLambdaIntegration: LambdaIntegration,
-        spaceLambdaIntegratino: LambdaIntegration
+        spaceLambdaIntegration: LambdaIntegration
     }) {
         super(scope, id, props);
 
@@ -18,8 +18,10 @@ export class APIStack extends cdk.Stack {
         const apiResources = api.root.addResource("test");
         apiResources.addMethod("GET", props.helloLambdaIntegration);
 
-        const spacesResources = api.root.addResource("spaces");
-        spacesResources.addMethod("GET", props.spaceLambdaIntegratino);
-        spacesResources.addMethod("POST", props.spaceLambdaIntegratino);
+        const spaceRouter = api.root.addResource("spaces");
+        spaceRouter.addMethod("GET", props.spaceLambdaIntegration);
+        spaceRouter.addMethod("POST", props.spaceLambdaIntegration);
+        spaceRouter.addMethod("POST", props.spaceLambdaIntegration);
+        spaceRouter.addMethod("DELETE", props.spaceLambdaIntegration);
     }
 }

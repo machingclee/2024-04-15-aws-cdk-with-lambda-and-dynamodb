@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import post from "./methods/post";
 import get from "./methods/get";
 import put from "./methods/put";
+import delete_ from "./methods/delete";
 
 const ddbClient = new DynamoDBClient({});
 
@@ -17,6 +18,8 @@ const handler = async (event: APIGatewayProxyEvent, context: Context): Promise<A
                 return post(event, ddbClient);
             case "PUT":
                 return put(event, ddbClient);
+            case "DELETE":
+                return delete_(event, ddbClient);
             default:
                 break;
         }
